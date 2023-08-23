@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html{
+    scroll-behavior: smooth;
+    text-align: center;
+}
+
+.hero{
+    padding-bottom: 5rem;
+}
+
+.center-txt{
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.navItem{
+    margin-right: 2rem;
+}
+
+.navItem:hover{
+    font-style: italic;
+}
+
+.details-card-zone{
+    max-width: 600px;
+    padding: 2rem;
+}
+
+.details-card-img{
+    max-height: 300px;
+}
+
+.detail-card-description{
+    max-width: 300px;
+}
