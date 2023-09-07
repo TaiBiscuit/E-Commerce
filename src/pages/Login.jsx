@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { auth } from '../firebase';
 
 export const Login = () => {
+
     return (
         <>
         <div className="hero min-h-screen bg-base-200">
@@ -27,7 +29,7 @@ export const Login = () => {
                 </label>
                 </div>
                 <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
+                <button className="btn btn-primary" >Login</button>
                 </div>
             </div>
             </div>

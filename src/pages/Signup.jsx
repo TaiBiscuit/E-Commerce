@@ -1,6 +1,39 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { UserContext } from '../context';
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
+import { auth } from '../firebase';
 
 export const Signup = () => {
+    const {currentUser, setCurrentUser} = useContext(UserContext); 
+  
+    const handleSignIn = async () => {
+      try {
+        let provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider)
+        .then((result) => {
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            const user = result.user;
+        }).catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            const email = error.customData.email;
+            const credential = GoogleAuthProvider.credentialFromError(error);
+    });} catch (error) {
+        console.error('Error signing in:', error);
+      }
+    };
+
+
+    useEffect(() => {
+        const userToLog = onAuthStateChanged(auth, (user) => {
+            setCurrentUser(user);
+        });
+        return userToLog;
+    }, []); 
+
+
+
     return (
         <>
         <div className="hero min-h-screen bg-base-200">
@@ -27,7 +60,7 @@ export const Signup = () => {
                 </label>
                 </div>
                 <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
+                <button className="btn btn-primary" onClick={handleSignIn}>Sign in</button>
                 </div>
             </div>
             </div>

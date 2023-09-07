@@ -7,10 +7,6 @@ html{
     text-align: center;
 }
 
-.hero{
-    padding-bottom: 5rem;
-}
-
 .center-txt{
     font-size: 3rem;
     font-weight: 700;
@@ -34,5 +30,14 @@ html{
 }
 
 .detail-card-description{
-    max-width: 300px;
+    max-width: 626px;
 }
+
+.other-products{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.details-half{
+    height: 340px;
+  }
