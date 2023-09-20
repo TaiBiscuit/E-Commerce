@@ -16,3 +16,7 @@ export const CartProvider = ({children}) => {
         </CartContext.Provider>
     );
 };
+
+export const UserAuth = () => {
+    return useContext(CartContext);
+}

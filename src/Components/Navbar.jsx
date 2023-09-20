@@ -3,11 +3,11 @@ import { NavItem } from './NavItem';
 import { CartContext, ProductContext } from '../context';
 
 export const Navbar = () => {
-  const {currentUser, setCurrentUser} = useContext(ProductContext); 
+  const {currentUser} = useContext(ProductContext); 
   const { itemCount, setItemCount} = useContext(CartContext);
   const [userProf, setUserProf] = useState(3);
 
-
+  console.log(currentUser)
   useEffect(() => {
     try {
       if(currentUser == undefined) {
