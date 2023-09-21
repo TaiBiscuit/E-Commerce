@@ -7,9 +7,9 @@ export const Navbar = () => {
   const { itemCount, setItemCount} = useContext(CartContext);
   const [userProf, setUserProf] = useState(3);
 
-  console.log(currentUser)
   useEffect(() => {
     try {
+      console.log(currentUser)
       if(currentUser == undefined) {
         setUserProf(4);
       } else {
@@ -23,9 +23,9 @@ export const Navbar = () => {
 
  return(
  <>
- <div className="navbar bg-base-100">
+ <div className="navbar bg-base-100 fixed z-50">
   <div className="flex-1">
-    <a className="btn btn-ghost normal-case text-xl" href='/'>Just Buy It!</a>
+    <NavItem className="btn btn-ghost normal-case text-xl" label="Just Buy It!" src="/"/>
   </div>
   <div className="flex-none">
     <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs navItem" />

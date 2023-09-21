@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { ProductContext } from '../context';
 import '../../dist/home.css'
 import { GoToDetailsBtn, Loader } from '../Components';
+import { BsGithub, BsFillTelephoneFill } from "react-icons/bs"; 
+import { MdMail } from "react-icons/md";
 
 export const Home = () => {
     const {savedProducts, setSavedProducts} = useContext(ProductContext); 
@@ -68,6 +70,19 @@ export const Home = () => {
                     )
                 })
             }
+            </div>
+            <h1 className='p5-10'>Contact us</h1>
+            <div className='flex pt-5 h-[50rem] justify-center items-center'>
+                <div className='flex'>
+                    <div className='flex flex-col mr-10 justify-center items-center hover:scale-125 transition easedelay-150'>
+                    <BsFillTelephoneFill size={50}/>
+                    <p className='mt-3'>1111133</p>
+                    </div>
+                    <div className='flex flex-col ml-10 justify-center items-center hover:scale-125 transition ease delay-150'>
+                    <MdMail size={50}/>
+                    <p className='mt-3'>mail@gmail.com</p>
+                    </div>
+                </div>
             </div>
         </div>   
     )

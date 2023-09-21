@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../context';
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
+import { Navigate } from "react-router-dom";
+import { signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
 import { auth } from '../firebase';
 
 export const Signup = () => {
@@ -28,6 +29,7 @@ export const Signup = () => {
     useEffect(() => {
         const userToLog = onAuthStateChanged(auth, (user) => {
             setCurrentUser(user);
+            <Navigate to='/'/>
         });
         return userToLog;
     }, []); 
