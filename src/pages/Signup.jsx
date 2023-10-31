@@ -1,11 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { UserContext } from '../context';
+import React, { useContext, useEffect } from 'react';
 import { Navigate } from "react-router-dom";
 import { signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
 import { auth } from '../firebase';
 
 export const Signup = () => {
-    const {currentUser, setCurrentUser} = useContext(UserContext); 
   
     const handleSignIn = async () => {
       try {
@@ -28,7 +26,6 @@ export const Signup = () => {
 
     useEffect(() => {
         const userToLog = onAuthStateChanged(auth, (user) => {
-            setCurrentUser(user);
             <Navigate to='/'/>
         });
         return userToLog;

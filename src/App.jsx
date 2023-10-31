@@ -1,19 +1,18 @@
 import { useState } from 'react'
 import '../dist/output.css'
-import { ProductContextProvider, UserContextProvider, CartProvider } from './context';
 import { MainRoutes } from './routes/MainRoutes';
+import { UserContextProvider } from './context/UserContext';
+import { CartContextProvider } from './context/CartContext';
 
 function App() {
 
   return (
     <>
-    <CartProvider>
-      <UserContextProvider>
-        <ProductContextProvider>
-          <MainRoutes />
-        </ProductContextProvider>
-      </UserContextProvider>
-    </CartProvider>
+    <UserContextProvider>
+      <CartContextProvider>
+        <MainRoutes />
+      </CartContextProvider>
+    </UserContextProvider>
     </>
   )
 }

@@ -1,12 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { ProductContext } from '../context';
-import '../../dist/home.css'
 import { GoToDetailsBtn, Loader } from '../Components';
 import { BsGithub, BsFillTelephoneFill } from "react-icons/bs"; 
 import { MdMail } from "react-icons/md";
 
 export const Home = () => {
-    const {savedProducts, setSavedProducts} = useContext(ProductContext); 
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -17,9 +14,10 @@ export const Home = () => {
         })
         .then(data => { 
             setProducts(data);
-            setSavedProducts(data);
         })
     }
+
+    //Loading Handler
 
     useEffect(() => {
        try {
@@ -34,6 +32,7 @@ export const Home = () => {
     }, []);
 
 
+    
     return loading ? (
         <Loader />
     ) :  (
@@ -51,12 +50,13 @@ export const Home = () => {
                 </div>
             </div>
             <h1 className='center-txt'>Our Cataloge</h1>
-            <div className="product-space" id='product-space'>
-            {         
-                products.map((e) => {
+            <div className="product-space flex pr-5 pl-5 pt-10 flex-wrap h-screen max-w-6xl justify-around overfloy-y-auto" id='product-space'>
+                {       
+                products.map((e, i) => {
+
                     let title = e.title.split("").slice(0, 53).join("")
                     return(
-                    <div className="card card-compact w-96 bg-base-100 shadow-xl supaCard" id={e.id}>
+                    <div className="card card-compact w-96 bg-base-100 shadow-xl supaCard" id={e.id} key={i}>
                         <figure><img src={e.image} className="card-img" alt="Shoes" /></figure>
                         <div className="card-body">
                             <h2 className="card-title">{title}!</h2>
@@ -68,11 +68,12 @@ export const Home = () => {
                         </div>
                     </div>
                     )
+                    num++
                 })
             }
             </div>
             <h1 className='p5-10'>Contact us</h1>
-            <div className='flex pt-5 h-[50rem] justify-center items-center'>
+            <div className='flex pt-2 h-[50rem] justify-center items-center'>
                 <div className='flex'>
                     <div className='flex flex-col mr-10 justify-center items-center hover:scale-125 transition easedelay-150'>
                     <BsFillTelephoneFill size={50}/>

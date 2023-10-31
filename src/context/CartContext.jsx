@@ -1,22 +1,25 @@
-import React, { createContext, useState } from "react";
+import React, {useState, useContext, createContext} from 'react';
 
 export const CartContext = createContext();
 
-export const CartProvider = ({children}) => {
-    const [itemCount, setItemCount] = useState([]); 
+export const CartContextProvider = ({children}) => {
 
-    return (
-        <CartContext.Provider 
-        value={{
-            itemCount, 
-            setItemCount, 
-        }}
-        >
-        {children}
+    const [cart, setCart] = useState([]);
+
+
+    return(
+        <CartContext.Provider value ={{ cart, setCart}}>
+            {children}
         </CartContext.Provider>
-    );
-};
+    )
+}
 
-export const UserAuth = () => {
-    return useContext(CartContext);
+
+export const useCartContext = () => {
+    const context = useContext(CartContext);
+    if(!context){
+        throw new Error("Ta mal esto")
+    } else {
+        return context
+    }
 }

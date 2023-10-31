@@ -1,74 +1,97 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
-import { CartContext, ProductContext } from '../context';
-import { MainLayout } from '../layout/MainLayout';
-/* import { GoToDetails, Loader } from '../components'; */
+import { Loader } from '../Components';
+import minusImage from '../assets/icon-minus.svg'
+import plusImage from '../assets/icon-plus.svg'
+import { useCartContext } from '../context/CartContext';
 
 export const Details = () => {
-    const params = useParams();
-    const productId= params.id - 1;
-    const {savedProducts, setSavedProducts} = useContext(ProductContext);
-    const {itemCount, setItemCount} = useContext(CartContext);
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [currentAmount, setCurrentAmount] = useState(0);
+    const {cart, setCart} = useCartContext();
+    const urlParams = useParams();
 
-    function getRandomNumber(){
-        return Math.floor(Math.random() * 20)
 
-    };
+        //Loading Handler
 
-    const handleSaveIt = (product) =>{
-        console.log(itemCount)
-        product.qty = 1;
-        console.log(itemCount.id)
-        const isItemOnCart = itemCount.find(itemCount.id == 2);
-        console.log(isItemOnCart)
-        setItemCount(product)
-    };
-    
-    return (
-    <>
-    <MainLayout>
-        <div className="details-card-zone">
-            <div className="card card-side bg-base-100 shadow-xl">
-                <figure><img src={savedProducts[productId].image} alt="Product Image" className='details-card-img'/></figure>
-                <div className="card-body">
-                    <h2 className="card-title">{savedProducts[productId].title}</h2>
-                    <p>${savedProducts[productId].price}</p>
-                    <div className="card-actions justify-end">
-                    <button className="btn btn-primary" onClick={() => handleSaveIt(savedProducts[productId])}>Buy Now!</button>
+    useEffect(() => {
+        try {
+            setLoading(true);
+            fetchData()
+            .finally(() => {
+                setLoading(false)
+            })
+        } catch (error) {
+            setLoading(false);
+        }
+    }, []);
+
+    const fetchData = async () => {
+        await fetch('https://fakestoreapi.com/products')
+        .then(res => {
+            return  res.json()
+        })
+        .then(data => { 
+            setProducts(data);
+        })
+    }
+
+    function handleAmount(num){
+        let current = currentAmount
+        if(num == 1){
+            current++
+            setCurrentAmount(current)
+        } else {
+            if(current == 0){
+                setCurrentAmount(0)
+            } else {
+                current--
+                setCurrentAmount(current)  
+            }       
+        }
+    }
+
+    function handleAddToCart(product){
+        product.amount = currentAmount;
+        const found = cart.includes(product)
+        console.log(product)
+        if(found){
+            cart[product.id].amount
+        } else{
+            setCart([...cart, product]) 
+        }
+    }
+
+    if(products[urlParams.id - 1] == undefined){
+        return (
+            <>
+            <Loader />
+            </>
+            )
+    } else {
+        const choosenProduct = products[urlParams.id - 1];
+        return (
+            <>
+            <br />
+            <br />
+            <br />
+            <div className="details-card flex align-center flex-col justify-center items-center">
+                <div className="container flex align-center flex-col justify-center items-center">
+                    <h1 className=''>{choosenProduct.title}</h1>
+                    <img src={choosenProduct.image} className='w-1/4 h-1/4'/>
+                    <p className=''>${choosenProduct.price}</p>
+                    <div className="amount-btn flex justify-between w-1/4 bg-slate-400 text-teal-200 p-2 mt-5 rounded-lg ">
+                        <button onClick={(e) => { handleAmount(1)}} className='p-10'><img src={plusImage} alt=""></img></button>
+                        <p>{currentAmount}</p>
+                        <button onClick={(e) => { handleAmount(0)}} className=''><img src={minusImage} alt=""></img></button>
                     </div>
+                    <button className="btn btn-warning mt-5 w-1/4" onClick={(e) => { handleAddToCart(choosenProduct)}}>Add to cart!</button>
                 </div>
             </div>
-        </div>
-        <div className="detail-card-description">
-            <p>{savedProducts[productId].description}</p>
-            <div className="other-products">
-                <h1 className='center-txt'>Other Products!</h1>
-                <div className="carousel w-full details-half">
-                    <div id="slide1" className="carousel-item relative w-full">
-                        <img src={savedProducts[getRandomNumber()].image} className="w-full" />
-                        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide3" className="btn btn-circle">❮</a> 
-                        <a href="#slide2" className="btn btn-circle">❯</a>
-                        </div>
-                    </div> 
-                    <div id="slide2" className="carousel-item relative w-full">
-                    <img src={savedProducts[getRandomNumber()].image} className="w-full" />
-                        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide1" className="btn btn-circle">❮</a> 
-                        <a href="#slide3" className="btn btn-circle">❯</a>
-                        </div>
-                    </div> 
-                    <div id="slide3" className="carousel-item relative w-full">
-                    <img src={savedProducts[getRandomNumber()].image} className="w-full" />
-                        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide2" className="btn btn-circle">❮</a> 
-                        <a href="#slide1" className="btn btn-circle">❯</a>
-                        </div>
-                    </div> 
-                </div>
-            </div>
-        </div>
-    </MainLayout>
-    </>
-    )
+            </> 
+            )
+    }
+
+
 }
