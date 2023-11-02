@@ -53,12 +53,11 @@ export const Details = () => {
     }
 
     function handleAddToCart(product){
-        product.amount = currentAmount;
+        product.amount = currentAmount; 
         const found = cart.includes(product)
-        console.log(product)
         if(found){
-            cart[product.id].amount
-        } else{
+            console.log(cart[0])
+        } else {
             setCart([...cart, product]) 
         }
     }
@@ -82,7 +81,7 @@ export const Details = () => {
                     <img src={choosenProduct.image} className='w-1/4 h-1/4'/>
                     <p className=''>${choosenProduct.price}</p>
                     <div className="amount-btn flex justify-between w-1/4 bg-slate-400 text-teal-200 p-2 mt-5 rounded-lg ">
-                        <button onClick={(e) => { handleAmount(1)}} className='p-10'><img src={plusImage} alt=""></img></button>
+                        <button onClick={(e) => { handleAmount(1)}} className=''><img src={plusImage} alt=""></img></button>
                         <p>{currentAmount}</p>
                         <button onClick={(e) => { handleAmount(0)}} className=''><img src={minusImage} alt=""></img></button>
                     </div>
