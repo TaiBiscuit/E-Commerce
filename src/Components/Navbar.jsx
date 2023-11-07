@@ -1,10 +1,9 @@
-import React, { useContext} from 'react';
+import React from 'react';
 import { NavItem } from './NavItem';
 import { useCartContext } from '../context/CartContext';
 
 export const Navbar = () => {
   const {cart} = useCartContext();
-
 
  return(
  <>
@@ -16,8 +15,7 @@ export const Navbar = () => {
     <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs navItem" />
     <NavItem label="Home" src="/"/>
     <NavItem label="Saved" src="/saved"/>
-
-              <div className="dropdown dropdown-end">
+    <div className="dropdown dropdown-end">
       <NavItem />
       <label tabIndex={0} className="btn btn-ghost btn-circle">
         <div className="indicator">
@@ -27,11 +25,8 @@ export const Navbar = () => {
       </label>
       <div tabIndex={0} className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow">
         <div className="card-body">
-          <span className="font-bold text-lg"> Items</span>
-          <span className="text-info">Subtotal: $999</span>
-          <div className="card-actions">
             <button className="btn btn-primary btn-block"><NavItem label="View Cart" src="/cart"/></button>
-          </div>
+
         </div>
       </div>
     </div>

@@ -49,7 +49,7 @@ export const Home = () => {
                     </div>
                 </div>
             </div>
-            <h1 className='center-txt pt-10 pb-10'>Our Cataloge</h1>
+            <h1 className='center-txt pt-10 pb-10 text-xl underline decoration-2'>Our Cataloge</h1>
             <div className="ese" id='product-space'>
                 {       
                 products.map((e, i) => {
@@ -73,7 +73,7 @@ export const Home = () => {
             }
             </div>
             <div>
-            <h1 className='p5-10'>Contact us</h1>
+            <h1 className='pt-10 text-xl underline decoration-2'>Contact us</h1>
             <div className='flex pt-2 h-[50rem] justify-center items-center'>
                 <div className='flex'>
                     <div className='flex flex-col mr-10 justify-center items-center hover:scale-125 transition easedelay-150'>

@@ -2372,6 +2372,10 @@ html {
   margin-right: 2.5rem;
 }
 
+.mr-4 {
+  margin-right: 1rem;
+}
+
 .mt-3 {
   margin-top: 0.75rem;
 }
@@ -2386,6 +2390,10 @@ html {
 
 .mt-6 {
   margin-top: 1.5rem;
+}
+
+.mt-10 {
+  margin-top: 2.5rem;
 }
 
 .flex {
@@ -2414,6 +2422,10 @@ html {
 
 .h-\[50rem\] {
   height: 50rem;
+}
+
+.h-screen {
+  height: 100vh;
 }
 
 .min-h-screen {
@@ -2452,6 +2464,10 @@ html {
   width: 100%;
 }
 
+.max-w-7xl {
+  max-width: 80rem;
+}
+
 .max-w-md {
   max-width: 28rem;
 }
@@ -2474,6 +2490,10 @@ html {
 
 .flex-shrink-0 {
   flex-shrink: 0;
+}
+
+.flex-row {
+  flex-direction: row;
 }
 
 .flex-col {
@@ -2610,6 +2630,14 @@ html {
   color: rgb(153 246 228 / var(--tw-text-opacity));
 }
 
+.underline {
+  text-decoration-line: underline;
+}
+
+.decoration-2 {
+  text-decoration-thickness: 2px;
+}
+
 .opacity-50 {
   opacity: 0.5;
 }
@@ -2673,3 +2701,4 @@ html{
     text-align: left;
   }
 }
+

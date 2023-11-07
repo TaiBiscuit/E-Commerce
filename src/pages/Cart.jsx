@@ -15,6 +15,9 @@ export const Cart = () => {
         setTotal(totalAmount)
     }, []); 
 
+    function handleDeleteGroup () {
+        console.log('Yes')
+    }
 
 
     return (
@@ -53,7 +56,7 @@ export const Cart = () => {
                         ))
                         }
                         <p className='ml-5 mb-5 mt-5'>Total: {total}</p>
-                        <button className="btn btn-error ml-5 mb-5">Delete Selected</button>
+                        <button className="btn btn-error ml-5 mb-5" onClick={handleDeleteGroup}>Delete Selected</button>
                     </tr>
                     </tbody>
                 </table>

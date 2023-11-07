@@ -72,17 +72,21 @@ export const Details = () => {
         const choosenProduct = products[urlParams.id - 1];
         return (
             <>
-            <div className="details-card flex align-center flex-col justify-center items-center">
-                <div className="container flex align-center flex-col justify-center items-center">
+            <div className="h-screen">
+                <div className="flex align-center flex-col justify-center items-center pt-10">
                     <h1 className=''>{choosenProduct.title}</h1>
                     <img src={choosenProduct.image} className='w-1/4 h-1/4'/>
-                    <p className=''>${choosenProduct.price}</p>
-                    <div className="amount-btn flex justify-between w-1/4 bg-slate-400 text-teal-200 p-2 mt-5 rounded-lg ">
-                        <button onClick={(e) => { handleAmount(1)}} className=''><img src={plusImage} alt=""></img></button>
-                        <p>{currentAmount}</p>
-                        <button onClick={(e) => { handleAmount(0)}} className=''><img src={minusImage} alt=""></img></button>
+                    <div>
+                        <p className='mt-10 font-bold mr-10'>${choosenProduct.price}</p>
+                        <div className='flex flex-col justify-center align-center'>
+                            <div className="amount-btn flex justify-between w-full bg-slate-400 text-teal-200 p-2 mt-5 rounded-lg ">
+                                <button onClick={(e) => { handleAmount(1)}} className=''><img src={plusImage} alt=""></img></button>
+                                <p>{currentAmount}</p>
+                                <button onClick={(e) => { handleAmount(0)}} className=''><img src={minusImage} alt=""></img></button>
+                            </div>
+                            <button className="btn btn-warning mt-5 w-full" onClick={(e) => { handleAddToCart(choosenProduct)}}>Add to cart!</button>
+                        </div>
                     </div>
-                    <button className="btn btn-warning mt-5 w-1/4" onClick={(e) => { handleAddToCart(choosenProduct)}}>Add to cart!</button>
                 </div>
             </div>
             </> 
