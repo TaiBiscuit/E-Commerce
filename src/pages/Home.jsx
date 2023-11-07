@@ -49,15 +49,15 @@ export const Home = () => {
                     </div>
                 </div>
             </div>
-            <h1 className='center-txt'>Our Cataloge</h1>
-            <div className="product-space flex pr-5 pl-5 pt-10 flex-wrap h-screen max-w-6xl justify-around overfloy-y-auto" id='product-space'>
+            <h1 className='center-txt pt-10 pb-10'>Our Cataloge</h1>
+            <div className="ese" id='product-space'>
                 {       
                 products.map((e, i) => {
 
                     let title = e.title.split("").slice(0, 53).join("")
                     return(
-                    <div className="card card-compact w-96 bg-base-100 shadow-xl supaCard" id={e.id} key={i}>
-                        <figure><img src={e.image} className="card-img" alt="Shoes" /></figure>
+                    <div className="card card-compact w-96 bg-base-100 shadow-xl supaCard mt-4 mb-10 items-center flex justify-center" id={e.id} key={i}>
+                        <figure><img src={e.image} className="card-img w-[12.5rem] h-[15.5rem]" alt="Shoes" /></figure>
                         <div className="card-body">
                             <h2 className="card-title">{title}!</h2>
                             <p>If a dog chews shoes whose shoes does he choose?</p>
@@ -72,6 +72,7 @@ export const Home = () => {
                 })
             }
             </div>
+            <div>
             <h1 className='p5-10'>Contact us</h1>
             <div className='flex pt-2 h-[50rem] justify-center items-center'>
                 <div className='flex'>
@@ -84,6 +85,7 @@ export const Home = () => {
                     <p className='mt-3'>mail@gmail.com</p>
                     </div>
                 </div>
+            </div>
             </div>
         </div>   
     )

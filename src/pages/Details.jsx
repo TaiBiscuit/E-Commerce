@@ -7,7 +7,7 @@ import { useCartContext } from '../context/CartContext';
 
 export const Details = () => {
     const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [setLoading] = useState(false);
     const [currentAmount, setCurrentAmount] = useState(0);
     const {cart, setCart} = useCartContext();
     const urlParams = useParams();
@@ -72,9 +72,6 @@ export const Details = () => {
         const choosenProduct = products[urlParams.id - 1];
         return (
             <>
-            <br />
-            <br />
-            <br />
             <div className="details-card flex align-center flex-col justify-center items-center">
                 <div className="container flex align-center flex-col justify-center items-center">
                     <h1 className=''>{choosenProduct.title}</h1>
@@ -91,6 +88,4 @@ export const Details = () => {
             </> 
             )
     }
-
-
 }

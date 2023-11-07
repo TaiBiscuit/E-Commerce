@@ -6,3 +6,12 @@ html{
     scroll-behavior: smooth;
     text-align: center;
 }
+
+.ese{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    margin-top: 30px;
+    text-align: left;
+    margin-bottom: 2rem;
+}
