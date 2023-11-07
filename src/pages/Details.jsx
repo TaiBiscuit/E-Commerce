@@ -7,7 +7,7 @@ import { useCartContext } from '../context/CartContext';
 
 export const Details = () => {
     const [products, setProducts] = useState([]);
-    const [setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [currentAmount, setCurrentAmount] = useState(0);
     const {cart, setCart} = useCartContext();
     const urlParams = useParams();
