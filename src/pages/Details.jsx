@@ -45,6 +45,7 @@ export const Details = () => {
         } else {
             if(current == 0){
                 setCurrentAmount(0)
+                alert('Please select an amount bigger than 0')
             } else {
                 current--
                 setCurrentAmount(current)  
@@ -54,9 +55,12 @@ export const Details = () => {
 
     function handleAddToCart(product){
         product.amount = currentAmount; 
-        const found = cart.includes(product)
-        if(found){
-            console.log(cart[0])
+        const productIn = cart.find((element) => element.id == product.id);
+        if(productIn){
+            const prodIndex = (element) => element.id == product.id;
+            const index = cart.findIndex(prodIndex);
+            cart[index].amount += product.amount;
+            setCart([...cart])
         } else {
             setCart([...cart, product]) 
         }

@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { auth } from '../firebase';
-import { signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 
 export const Login = () => {
+    const navigate = useNavigate();
 
     const handleGoogleSignIn = async () => {
         try {
@@ -13,6 +15,8 @@ export const Login = () => {
               const credential = GoogleAuthProvider.credentialFromResult(result);
               const token = credential.accessToken;
               const user = result.user;
+              console.log(user)
+              navigate("/")
             }).catch((error) => {
               const errorCode = error.code;
               const errorMessage = error.message;
@@ -28,6 +32,7 @@ export const Login = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
         loginEmail(email, password);
+        navigate("/")
     }
 
 
@@ -35,7 +40,6 @@ export const Login = () => {
         const res = await signInWithEmailAndPassword(auth, email, password);
         return res
     }
-
 
     return (
         <>
@@ -46,8 +50,9 @@ export const Login = () => {
             <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
             </div>
             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                <form onSubmit={(e) => {handleSignIn(e)}}>
-                    <div className="card-body">
+                <div className="card-body">
+                    <form onSubmit={(e) => {handleSignIn(e)}}>
+                    
                         <div className="form-control">
                         <label className="label">
                             <span className="label-text">Email</span>
@@ -65,9 +70,13 @@ export const Login = () => {
                         </div>
                         <div className="form-control mt-6">
                         <button className="btn btn-primary" >Login</button>
+                        
                         </div>
-                    </div>
-                </form>
+                    </form>
+                    <br />
+                    <p>You don't have an account?</p>
+                    <button className="btn btn-primary mt-6" onClick={handleGoogleSignIn} >Sign With Google</button>
+                </div>
             </div>
         </div>
         </div>
