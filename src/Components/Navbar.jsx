@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavItem } from './NavItem';
 import { useCartContext } from '../context/CartContext';
+import { useUserContext } from '../context/UserContext';
+import { signOut } from "firebase/auth";
+import { auth } from '../firebase';
 
 export const Navbar = () => {
+  const {user} = useUserContext();
   const {cart} = useCartContext();
+  const [isUser, setIsUser] = useState(false);
+
+
+  function logOff(){
+    signOut(auth)
+  }
+
+  useEffect(() =>{
+    if(user == null){
+      setIsUser(false)
+    } else {
+      setIsUser(true)
+    }
+  }, [user])
 
  return(
  <>
@@ -31,25 +49,34 @@ export const Navbar = () => {
       </div>
     </div>
     <div className="dropdown dropdown-end">
-      <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-        <div className="w-10 rounded-full">
-          <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-        </div>
-      </label>
-      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+      {
+        isUser ? 
+        <>
+        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+          <div className="w-10 rounded-full">
+            <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+          </div>
+        </label>
+        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
           <li>
-          <a className="justify-between">
-            Profile
-            <span className="badge">New</span>
-          </a>
+            <a className="justify-between">
+              Profile
+              <span className="badge">New</span>
+            </a>
           </li>
           <li><a>Settings</a></li>
-          <li><a>Logout</a></li>
-          </ul>
+          <li><a onClick={logOff}>Logout</a></li>
+        </ul>
+        </>
+        :
+        <>
+        <div className='flex'>
+        <NavItem label="Sign in" src="/sigin"/>
+        <NavItem label="Log in" src="/login"/>
+        </div>
+        </>
+      }
     </div>
-          <NavItem label="Sign in" src="/sigin"/>
-          <NavItem label="Log in" src="/login"/>
-
   </div>
   </div>
   </>

@@ -1,8 +1,19 @@
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 import { Navbar } from "../Components";
 import { Home, Signup, Details, Login, Cart } from "../pages";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from '../firebase';
+import { useUserContext } from "../context/UserContext";
 
 export const MainRoutes = () => {
+    const {user, setUser} = useUserContext();
+    onAuthStateChanged(auth, (firebaseUser) => {
+    if(firebaseUser){
+    setUser(firebaseUser)
+    } else {
+    setUser(null)
+    }
+    });
     return(
         <BrowserRouter>
             <Navbar /> 

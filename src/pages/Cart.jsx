@@ -6,17 +6,19 @@ export const Cart = () => {
     const [total, setTotal] = useState(0);
 
     useEffect(() => {
-        console.log(cart)
         let totalAmount = 0
         cart.forEach(product => {
-            console.log(product.price)
             totalAmount += product.price * product.amount
         })
         setTotal(totalAmount)
     }, []); 
 
-    function handleDeleteGroup () {
-        console.log('Yes')
+    function handleDelete (product) {
+        const index = cart.indexOf(product);
+        let newArray = cart.slice(index, 1);
+        console.log(index)
+        console.log(newArray)
+        setCart(newArray);
     }
 
 
@@ -31,13 +33,8 @@ export const Cart = () => {
                     <tbody>
                     <tr>
                         {
-                        cart.map(product => (
-                        <div className="product ">
-                            <th>
-                            <label>
-                                <input type="checkbox" className="checkbox" />
-                            </label>
-                            </th>
+                        cart.map((product, i) => (
+                        <div className="product" key={i}>
                             <td>
                             <div className="flex items-center space-x-3">
                                 <div className="avatar">
@@ -52,11 +49,14 @@ export const Cart = () => {
                                 </div>
                             </div>
                             </td>
+                            <th>
+                            <button className="btn btn-error ml-5 mb-5" onClick={(e) => { const productToDel = product; handleDelete(productToDel)}}>Delete</button>
+                            </th>
                         </div>
                         ))
                         }
                         <p className='ml-5 mb-5 mt-5'>Total: {total}</p>
-                        <button className="btn btn-error ml-5 mb-5" onClick={handleDeleteGroup}>Delete Selected</button>
+                        <button className="btn btn-success ml-5 mb-5">Buy!</button>
                     </tr>
                     </tbody>
                 </table>
