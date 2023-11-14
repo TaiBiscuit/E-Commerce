@@ -50,6 +50,7 @@ export const Home = () => {
                 </div>
             </div>
             <h1 className='center-txt pt-10 pb-10 text-xl underline decoration-2'>Our Cataloge</h1>
+            <div className='ese2'>
             <div className="ese" id='product-space'>
                 {       
                 products.map((e, i) => {
@@ -71,6 +72,7 @@ export const Home = () => {
                     num++
                 })
             }
+            </div>
             </div>
             <div>
             <h1 className='pt-10 text-xl underline decoration-2'>Contact us</h1>

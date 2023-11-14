@@ -4,6 +4,7 @@ import '../dist/home.css'
 import { MainRoutes } from './routes/MainRoutes';
 import { UserContextProvider } from './context/UserContext';
 import { CartContextProvider } from './context/CartContext';
+import { SavedContextProvider } from './context/SavedContext';
 
 function App() {
 
@@ -11,7 +12,9 @@ function App() {
     <>
     <UserContextProvider>
       <CartContextProvider>
-        <MainRoutes />
+        <SavedContextProvider>
+          <MainRoutes />
+        </SavedContextProvider>
       </CartContextProvider>
     </UserContextProvider>
     </>

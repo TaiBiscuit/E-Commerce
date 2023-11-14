@@ -14,5 +14,12 @@ html{
     margin-top: 30px;
     text-align: left;
     margin-bottom: 2rem;
+    max-width: 100%;
+    align-items: center;
 }
 
+.ese2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

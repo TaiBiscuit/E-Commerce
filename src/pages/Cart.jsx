@@ -19,11 +19,10 @@ export const Cart = () => {
         setTotal(totalAmount)
     }, [cart]); 
 
-    function handleDelete (product, i) {
+    function handleDelete (product) {
         const idToRemove = product.id
         const newArray = cart.filter((item) => item.id !== idToRemove)
         setCart(newArray);
-        console.log(cart)
     }
 
     function handleBuy () {
@@ -31,7 +30,14 @@ export const Cart = () => {
             alert('You have to log in first!');
             navigate('/login');
         }  else {
-            console.log('si')
+            alert(
+                `
+                Thanks for buying!
+                -Order 3610-
+                Your total amount is ${total}
+                `
+            )
+            setCart([])
         }
     }
 
@@ -62,7 +68,7 @@ export const Cart = () => {
                             </div>
                             </td>
                             <th>
-                            <button className="btn btn-error ml-5 mb-5" onClick={(e) => { const productToDel = product; handleDelete(productToDel, i)}}>Delete</button>
+                            <button className="btn btn-error ml-5 mb-5" onClick={(e) => { const productToDel = product; handleDelete(productToDel)}}>Delete</button>
                             </th>
                         </div>
                         ))
