@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 import { Navbar } from "../Components";
-import { Home, Details, Login, Cart } from "../pages";
+import { Home, Details, Login, Cart, Saved } from "../pages";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from '../firebase';
 import { useUserContext } from "../context/UserContext";
@@ -22,6 +22,7 @@ export const MainRoutes = () => {
                 <Route exact path="/login" element={<Login />}/>
                 <Route exact path="/details/:id" element={<Details />}/>
                 <Route exact path="/cart" element={<Cart />}/>
+                <Route exact path="/saved" element={<Saved />}/>
             </Routes>
         </BrowserRouter>
     )

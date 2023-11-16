@@ -5,12 +5,19 @@ import { useUserContext } from '../context/UserContext';
 import { signOut } from "firebase/auth";
 import { auth } from '../firebase';
 import leDuck from '../assets/yellow-duck.svg'
+import { useNavigate } from 'react-router-dom';
 
 export const Navbar = () => {
   const {user} = useUserContext();
   const {cart} = useCartContext();
   const [isUser, setIsUser] = useState(false);
+  const navigate = useNavigate();
 
+
+  function goCart(e){
+    e.preventDefault();
+    navigate('/cart');
+  }
 
   function logOff(){
     signOut(auth)
@@ -44,7 +51,7 @@ export const Navbar = () => {
       </label>
       <div tabIndex={0} className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow">
         <div className="card-body">
-            <button className="btn btn-primary btn-block"><NavItem label="View Cart" src="/cart"/></button>
+          <button className="btn btn-primary btn-block" onClick={(e) => goCart(e)}>View Cart</button>
 
         </div>
       </div>

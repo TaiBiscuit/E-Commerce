@@ -69,7 +69,6 @@ export const Home = () => {
                         </div>
                     </div>
                     )
-                    num++
                 })
             }
             </div>

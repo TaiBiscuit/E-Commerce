@@ -57,8 +57,7 @@ export const Details = () => {
     }
 
     function handleSaveItOrNot(product, wasSaved){
-        
-        if(wasSaved = 0){
+        if(wasSaved == 0){
             setSaved([...saved, product]);
             setIsSaved(true);
         } else {
@@ -85,10 +84,7 @@ export const Details = () => {
         }
     }
 
-
-
-
-
+    
     if(products[urlParams.id - 1] == undefined){
         return (
             <>
