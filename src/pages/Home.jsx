@@ -62,7 +62,7 @@ export const Home = () => {
                         <div className="card-body">
                             <h2 className="card-title">{title}!</h2>
                             <p>If a dog chews shoes whose shoes does he choose?</p>
-                            <div className="card-actions justify-end">
+                            <div className="card-actions justify-end items-center">
                             <div  className='box-price'>${e.price}</div>
                             <GoToDetailsBtn product={e} />
                             </div>
@@ -73,17 +73,17 @@ export const Home = () => {
             }
             </div>
             </div>
-            <div>
+            <div className='mb-32'>
             <h1 className='pt-10 text-xl underline decoration-2'>Contact us</h1>
-            <div className='flex pt-2 h-[50rem] justify-center items-center'>
+            <div className='flex pt-2 justify-center items-center h-2/5 mt-5'>
                 <div className='flex'>
                     <div className='flex flex-col mr-10 justify-center items-center hover:scale-125 transition easedelay-150'>
                     <BsFillTelephoneFill size={50}/>
-                    <p className='mt-3'>1111133</p>
+                    <p className='mt-3'>+19998887766</p>
                     </div>
                     <div className='flex flex-col ml-10 justify-center items-center hover:scale-125 transition ease delay-150'>
                     <MdMail size={50}/>
-                    <p className='mt-3'>mail@gmail.com</p>
+                    <p className='mt-3'>example@gmail.com</p>
                     </div>
                 </div>
             </div>

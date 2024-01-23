@@ -2387,6 +2387,10 @@ html {
   z-index: 1;
 }
 
+.m-8 {
+  margin: 2rem;
+}
+
 .mb-10 {
   margin-bottom: 2.5rem;
 }
@@ -2431,8 +2435,8 @@ html {
   margin-top: 1.5rem;
 }
 
-.mb-32{
-  margin-bottom: 10rem;
+.mb-32 {
+  margin-bottom: 8rem;
 }
 
 .flex {
@@ -2465,6 +2469,26 @@ html {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-\[10rem\] {
+  height: 10rem;
+}
+
+.h-\[20rem\] {
+  height: 20rem;
+}
+
+.h-\[30rem\] {
+  height: 30rem;
+}
+
+.h-\[40rem\] {
+  height: 40rem;
+}
+
+.h-2\/5 {
+  height: 40%;
 }
 
 .min-h-screen {
@@ -2721,6 +2745,18 @@ html{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media only screen and (max-width:1600px){
+  .ese{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width:460px){
+  .ese{
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .hover\:scale-125:hover {
